@@ -11,8 +11,9 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:5173",
-        "https://fit-track-buya0pw1u-shazim-hassans-projects.vercel.app",
+        "https://fit-track-eta-three.vercel.app",
     ],
+    allow_origin_regex=r"https://fit-track.*-shazim-hassans-projects\.vercel\.app",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
