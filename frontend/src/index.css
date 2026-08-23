@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  scrollbar-color: #33353f #14151a;
+}
+
+body {
+  background-color: #14151a;
+  color: #f2f0ea;
+  font-family: "Inter", sans-serif;
+}
+
+.font-display {
+  letter-spacing: 0.02em;
+}
+
+/* Visible keyboard focus, kept consistent across every control */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid #c6ff3d;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+@layer components {
+  .input {
+    @apply w-full bg-panel2 border border-line rounded-md px-3 py-2 text-sm text-bone placeholder-mute/60 focus:outline-none focus:border-volt transition-colors;
+  }
+
+  .btn-primary {
+    @apply bg-volt text-ink font-semibold text-sm rounded-md px-4 py-2.5 hover:brightness-110 active:brightness-95 transition disabled:opacity-50 disabled:pointer-events-none;
+  }
+
+  .btn-secondary {
+    @apply bg-panel2 border border-line text-bone font-medium text-sm rounded-md px-4 py-2.5 hover:border-volt transition disabled:opacity-50 disabled:pointer-events-none;
+  }
+
+  .btn-danger {
+    @apply bg-transparent border border-ember/40 text-ember font-medium text-sm rounded-md px-3 py-1.5 hover:bg-ember/10 transition;
+  }
+}
