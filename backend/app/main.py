@@ -9,11 +9,7 @@ app = FastAPI(title="Fit-Track API")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",
-        "https://fit-track-eta-three.vercel.app",
-    ],
-    allow_origin_regex=r"https://fit-track.*-shazim-hassans-projects\.vercel\.app",
+    allow_origins=settings.allowed_origins.split(","),
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
