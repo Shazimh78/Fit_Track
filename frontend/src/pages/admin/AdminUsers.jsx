@@ -56,7 +56,7 @@ export default function AdminUsers() {
         </div>
       )}
 
-      <div className="bg-panel border border-line rounded-lg overflow-hidden">
+      <div className="bg-panel border border-line rounded-lg overflow-x-auto">
         <table className="w-full text-sm">
           <thead className="bg-panel2 text-mute text-xs uppercase tracking-wide">
             <tr>

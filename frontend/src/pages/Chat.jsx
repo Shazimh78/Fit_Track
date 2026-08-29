@@ -39,7 +39,7 @@ export default function Chat() {
   }
 
   return (
-    <div className="flex flex-col h-[calc(100vh-5rem)]">
+    <div className="flex flex-col h-[calc(100vh-6.5rem)] md:h-[calc(100vh-5rem)]">
       <div className="mb-4">
         <h1 className="font-display text-4xl tracking-wide mb-1">Diet & fitness chat</h1>
         <p className="text-mute text-sm">
@@ -56,7 +56,7 @@ export default function Chat() {
           <div key={i} className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}>
             <div
               className={[
-                "max-w-[75%] rounded-lg px-4 py-2.5 text-sm leading-relaxed whitespace-pre-wrap",
+                "max-w-[85%] sm:max-w-[75%] rounded-lg px-4 py-2.5 text-sm leading-relaxed whitespace-pre-wrap",
                 m.role === "user" ? "bg-volt text-ink" : "bg-panel2 text-bone",
               ].join(" ")}
             >

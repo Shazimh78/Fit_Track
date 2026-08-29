@@ -75,12 +75,12 @@ export default function Dashboard() {
 
   return (
     <div>
-      <div className="flex items-start justify-between mb-1">
-        <h1 className="font-display text-4xl tracking-wide">
+      <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 mb-1">
+        <h1 className="font-display text-3xl sm:text-4xl tracking-wide">
           Welcome back, <span className="text-volt">{data.name.split(" ")[0]}</span>
         </h1>
         {!editing && (
-          <button onClick={openEdit} className="btn-secondary text-xs py-1.5 px-3 shrink-0">
+          <button onClick={openEdit} className="btn-secondary text-xs py-1.5 px-3 shrink-0 self-start">
             Update weight / details
           </button>
         )}
@@ -107,7 +107,7 @@ export default function Dashboard() {
             </div>
           )}
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 mb-4">
             <label className="block">
               <span className="block text-xs uppercase tracking-wide text-mute mb-1.5">Age</span>
               <input
