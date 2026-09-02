@@ -3,6 +3,15 @@ from typing import Literal, Optional
 from pydantic import BaseModel, Field
 
 
+class CaloriePlanOption(BaseModel):
+    label: str
+    pace_kg_per_week: float
+    daily_calories: int
+    weekly_change_kcal: int
+    estimated_weeks: float
+    floor_applied: bool
+
+
 class DashboardSummary(BaseModel):
     name: str
     gender: str
@@ -16,6 +25,7 @@ class DashboardSummary(BaseModel):
     bmr_calories: int
     estimated_daily_calories: int
     progress_percent: float
+    calorie_plan: list[CaloriePlanOption] = Field(default_factory=list)
 
 
 class ProfileUpdateRequest(BaseModel):

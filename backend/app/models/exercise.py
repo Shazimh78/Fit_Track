@@ -2,7 +2,7 @@ from typing import Literal, Optional
 
 from pydantic import BaseModel, Field
 
-MuscleGroup = Literal["chest", "back", "legs", "shoulders", "arms", "core", "full_body"]
+MuscleGroup = Literal["chest", "back", "legs", "shoulders", "biceps", "triceps", "core", "full_body"]
 Equipment = Literal["bodyweight", "dumbbell", "barbell", "machine", "band"]
 Difficulty = Literal["beginner", "intermediate", "advanced"]
 

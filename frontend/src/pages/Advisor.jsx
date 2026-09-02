@@ -2,7 +2,7 @@ import { useState } from "react";
 import { recommendApi } from "../api/endpoints";
 import ExerciseCard from "../components/ExerciseCard";
 
-const MUSCLES = ["chest", "back", "legs", "shoulders", "arms", "core", "full_body"];
+const MUSCLES = ["chest", "back", "legs", "shoulders", "biceps", "triceps", "core", "full_body"];
 const MAX_MUSCLES = 4;
 const EXPERIENCE_LEVELS = [
   { value: "", label: "Auto (based on BMI)" },

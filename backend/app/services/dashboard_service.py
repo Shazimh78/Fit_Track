@@ -43,6 +43,60 @@ def build_profile_updates(current: dict, payload: dict) -> dict:
     return updates
 
 
+CAL_PER_KG_FAT = 7700  # standard approximation used across fitness apps
+
+# Never suggest below these, regardless of what the math says. These are
+# widely-cited minimums; going lower isn't something an app should casually
+# recommend without medical supervision.
+MIN_CALORIES = {"male": 1500, "female": 1200, "other": 1350}
+
+# Paces offered, in kg/week. Capped at 0.75 — beyond roughly 1kg/week for
+# most people, the required deficit gets hard to sustain safely without
+# guidance, so the app doesn't offer faster options than this.
+PACE_OPTIONS = [
+    ("steady", 0.25),
+    ("moderate", 0.5),
+    ("aggressive", 0.75),
+]
+
+
+def build_calorie_plan(gender: str, maintenance_calories: int, current_weight: float, target_weight: float) -> list[dict]:
+    """
+    For each pace option, compute a daily calorie target and estimated time
+    to reach the goal. Direction (surplus vs deficit) is inferred from
+    current vs target weight — the caller doesn't need to specify it.
+    Returns an empty list if already at the target weight.
+    """
+    diff = target_weight - current_weight
+    if abs(diff) < 0.1:
+        return []
+
+    direction = 1 if diff > 0 else -1  # +1 = gaining, -1 = losing
+    floor = MIN_CALORIES.get(gender, MIN_CALORIES["other"])
+
+    plan = []
+    for label, pace_kg_per_week in PACE_OPTIONS:
+        weekly_change_kcal = pace_kg_per_week * CAL_PER_KG_FAT
+        daily_adjustment = round(weekly_change_kcal / 7)
+
+        raw_target = maintenance_calories + (direction * daily_adjustment)
+        floor_applied = direction < 0 and raw_target < floor
+        daily_calories = max(raw_target, floor) if direction < 0 else raw_target
+
+        weeks_to_goal = round(abs(diff) / pace_kg_per_week, 1)
+
+        plan.append({
+            "label": label,
+            "pace_kg_per_week": pace_kg_per_week,
+            "daily_calories": daily_calories,
+            "weekly_change_kcal": round(weekly_change_kcal),
+            "estimated_weeks": weeks_to_goal,
+            "floor_applied": floor_applied,
+        })
+
+    return plan
+
+
 def calculate_bmr(gender: str, weight_kg: float, height_cm: float, age: int) -> int:
     """Mifflin-St Jeor equation — the most widely validated BMR formula."""
     base = 10 * weight_kg + 6.25 * height_cm - 5 * age
@@ -72,6 +126,10 @@ def build_dashboard_summary(user: dict) -> dict:
     starting = user.get("starting_weight_kg", user["weight_kg"])
     progress = calculate_progress_percent(starting, user["weight_kg"], user["target_weight_kg"])
 
+    calorie_plan = build_calorie_plan(
+        user["gender"], tdee, user["weight_kg"], user["target_weight_kg"]
+    )
+
     return {
         "name": user["name"],
         "gender": user["gender"],
@@ -85,4 +143,5 @@ def build_dashboard_summary(user: dict) -> dict:
         "bmr_calories": bmr,
         "estimated_daily_calories": tdee,
         "progress_percent": progress,
+        "calorie_plan": calorie_plan,
     }

@@ -89,23 +89,41 @@ EXERCISES = [
         "Rotate your palms from facing you to facing forward as you press",
         "Keep your core tight to avoid arching your back at the top"]},
 
-    # Arms
-    {"name": "Barbell curl", "muscle_group": "arms", "equipment": "barbell", "difficulty": "beginner",
+    # Biceps
+    {"name": "Barbell curl", "muscle_group": "biceps", "equipment": "barbell", "difficulty": "beginner",
      "default_sets_reps": "3x12", "posture_tips": [
         "Keep your elbows pinned to your sides throughout the curl",
         "Avoid swinging your torso to help lift the weight"]},
-    {"name": "Triceps rope pushdown", "muscle_group": "arms", "equipment": "machine", "difficulty": "beginner",
-     "default_sets_reps": "3x15", "posture_tips": [
-        "Keep your elbows tucked and stationary at your sides",
-        "Split the rope apart at the bottom for a full triceps squeeze"]},
-    {"name": "Hammer curl", "muscle_group": "arms", "equipment": "dumbbell", "difficulty": "beginner",
+    {"name": "Hammer curl", "muscle_group": "biceps", "equipment": "dumbbell", "difficulty": "beginner",
      "default_sets_reps": "3x12", "posture_tips": [
         "Keep your wrist neutral (thumb up) through the whole movement",
         "Control the lowering phase instead of letting the weight drop"]},
-    {"name": "Dips", "muscle_group": "arms", "equipment": "bodyweight", "difficulty": "intermediate",
+    {"name": "Concentration curl", "muscle_group": "biceps", "equipment": "dumbbell", "difficulty": "beginner",
+     "default_sets_reps": "3x12 each arm", "posture_tips": [
+        "Brace your elbow against your inner thigh to remove momentum",
+        "Squeeze at the top rather than just lifting to the same height each rep"]},
+    {"name": "Preacher curl", "muscle_group": "biceps", "equipment": "barbell", "difficulty": "intermediate",
      "default_sets_reps": "3x10", "posture_tips": [
-        "Lean forward slightly to bias chest, stay upright to bias triceps",
+        "Keep your upper arm flush against the pad the whole set",
+        "Don't fully lock out at the bottom — keep slight tension on the bicep"]},
+
+    # Triceps
+    {"name": "Triceps rope pushdown", "muscle_group": "triceps", "equipment": "machine", "difficulty": "beginner",
+     "default_sets_reps": "3x15", "posture_tips": [
+        "Keep your elbows tucked and stationary at your sides",
+        "Split the rope apart at the bottom for a full triceps squeeze"]},
+    {"name": "Dips", "muscle_group": "triceps", "equipment": "bodyweight", "difficulty": "intermediate",
+     "default_sets_reps": "3x10", "posture_tips": [
+        "Stay upright rather than leaning forward to keep the emphasis on triceps",
         "Don't drop so low that your shoulders round forward excessively"]},
+    {"name": "Skull crusher", "muscle_group": "triceps", "equipment": "barbell", "difficulty": "intermediate",
+     "default_sets_reps": "3x10", "posture_tips": [
+        "Keep your upper arms fixed and vertical, only the forearms move",
+        "Lower the bar toward your forehead with control, don't let it drift back"]},
+    {"name": "Overhead triceps extension", "muscle_group": "triceps", "equipment": "dumbbell", "difficulty": "beginner",
+     "default_sets_reps": "3x12", "posture_tips": [
+        "Keep your elbows pointed forward and close to your head",
+        "Lower until you feel a stretch, don't let your elbows flare outward"]},
 
     # Core
     {"name": "Plank", "muscle_group": "core", "equipment": "bodyweight", "difficulty": "beginner",

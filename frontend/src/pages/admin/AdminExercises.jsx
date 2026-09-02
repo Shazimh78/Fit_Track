@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { adminApi, exerciseApi } from "../../api/endpoints";
 
-const MUSCLES = ["chest", "back", "legs", "shoulders", "arms", "core", "full_body"];
+const MUSCLES = ["chest", "back", "legs", "shoulders", "biceps", "triceps", "core", "full_body"];
 const EQUIPMENT = ["bodyweight", "dumbbell", "barbell", "machine", "band"];
 const DIFFICULTY = ["beginner", "intermediate", "advanced"];
 

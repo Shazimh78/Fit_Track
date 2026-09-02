@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { exerciseApi } from "../api/endpoints";
 import ExerciseCard from "../components/ExerciseCard";
 
-const MUSCLES = ["all", "chest", "back", "legs", "shoulders", "arms", "core", "full_body"];
+const MUSCLES = ["all", "chest", "back", "legs", "shoulders", "biceps", "triceps", "core", "full_body"];
 
 export default function ExerciseLibrary() {
   const [muscle, setMuscle] = useState("all");

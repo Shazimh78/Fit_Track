@@ -201,6 +201,36 @@ export default function Dashboard() {
         <ProgressBar percent={data.progress_percent} label={`${data.weight_to_go_kg}kg to go`} />
       </div>
 
+      {data.calorie_plan?.length > 0 && (
+        <div className="bg-panel border border-line rounded-lg p-6 mt-6">
+          <h2 className="font-display text-2xl tracking-wide mb-1">Calorie plan</h2>
+          <p className="text-mute text-sm mb-5">
+            Pick a pace to reach {data.target_weight_kg}kg. These are estimates to start from and
+            adjust based on your actual results, not a guarantee.
+          </p>
+          <div className="grid sm:grid-cols-3 gap-4">
+            {data.calorie_plan.map((option) => (
+              <div key={option.label} className="bg-panel2 border border-line rounded-lg p-4">
+                <p className="text-xs uppercase tracking-widest text-mute mb-2 capitalize">
+                  {option.label} &middot; {option.pace_kg_per_week}kg/week
+                </p>
+                <p className="font-display text-3xl text-volt leading-none mb-1">
+                  {option.daily_calories}
+                  <span className="text-sm text-mute font-body ml-1">kcal/day</span>
+                </p>
+                <p className="text-xs text-mute mt-2">~{option.estimated_weeks} weeks to goal</p>
+                {option.floor_applied && (
+                  <p className="text-xs text-ember mt-2">
+                    Capped at a safe minimum — this pace isn't achievable safely at your current
+                    maintenance calories.
+                  </p>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
       <p className="text-xs text-mute mt-6">
         Estimated daily needs are calculated from your BMR and activity level — not a measured
         burn from a tracked workout. Update your weight periodically for the most accurate picture.
